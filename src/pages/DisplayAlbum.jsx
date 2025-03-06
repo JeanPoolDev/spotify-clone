@@ -12,7 +12,7 @@ export function DisplayAlbum() {
    <>
     <Navbar />
 
-    <div className="mt-10 flex gap-6">
+    <div className="mt-10 flex flex-col gap-6 md:flex-row">
       <img className="w-48" src={albumSongs.image}  />
       <div className="space-y-3">
         <p>PlayList</p>
