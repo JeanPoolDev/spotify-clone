@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+
+.fondo{
+ background: linear-gradient(to right, blue, green, red);
+}
+
+::-webkit-scrollbar{
+ display: none;
+}
