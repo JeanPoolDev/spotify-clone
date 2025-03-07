@@ -1,11 +1,10 @@
 import { useParams } from "react-router";
 import { Navbar } from "../components/Navbar";
-import { albumsData, assets } from "../assets/assets";
+import { albumsData, assets, songsData } from "../assets/assets";
 
 export function DisplayAlbum() {
   
   const {id} = useParams();
-
   const albumSongs = albumsData[id];
 
   return (
@@ -28,8 +27,31 @@ export function DisplayAlbum() {
       </div>
     </div>
 
+    <div className="grid grid-cols-3 my-4 sm:grid-cols-4 text-[#a7a7a7] p-2">
+      <p><b className="mr-4">#</b>Title</p>
+      <p>Album</p>
+      <p className="hidden sm:block">Date Added</p>
+      <img src={assets.clock_icon} className="w-4 m-auto" />
+    </div>
 
-
+    <hr />
+      {
+        songsData.map((song, index) => (
+          <div 
+            key={song.id}
+            className="grid grid-cols-3 sm:grid-cols-4 my-4 text-[#a7a7a7] 
+            hover:bg-[#ffffff2b] items-center p-2 cursor-pointer">
+            <p>
+              <b className="mr-4">{index + 1}</b>
+              <img src={song.image} className="inline-block w-10 mr-4" />
+              {song.name}
+            </p>
+            <p className="hidden sm:block" >{albumSongs.name}</p>
+            <p>5 days ago</p>
+            <p className="m-auto">{song.duration}</p>
+          </div>
+        ))
+      }
 
    </>
   )
