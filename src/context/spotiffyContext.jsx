@@ -7,6 +7,7 @@ export function SpotifyProvider({ children }) {
 
   const [loading, setLoading] = useState(false);
   const [track, setTrack] = useState(songsData[0]);
+  const [range, setRange] = useState(5);
   const [time, setTime] = useState({
     currentTime: {
       minute: 0,
@@ -36,6 +37,57 @@ export function SpotifyProvider({ children }) {
     await setTrack(songsData[id]);
     await refAudio.current.play();
     setLoading(true);
+  }
+
+  const previous = () => {
+    if (track.id > 0) {
+
+      setTrack(songsData[track.id - 1]);
+
+      setTimeout(() => {
+        refAudio.current.play()
+          .then(() => {
+            setLoading(true);
+          })
+          .catch(error => {
+            console.error("Error al reproducir la canción anterior:", error);
+            setLoading(false);
+          });
+      }, 10);
+
+    }
+  }
+
+  const next = () => {
+    if (track.id < songsData.length - 1) {
+      setTrack(songsData[track.id + 1])
+
+      setTimeout(() => {
+        refAudio.current.play()
+          .then(() => {
+            setLoading(true)
+          }).catch(error => {
+            console.error("Error al reproducir la canción siguiente:", error);
+            setLoading(false)
+          })
+      }, 10);
+
+    }
+  }
+
+
+  const seekSong = (e) => {
+    refAudio.current.currentTime = ((e.nativeEvent.offsetX / refBg.current.offsetWidth) * refAudio.current.duration)
+  }
+
+  const volumen = (e) => {
+    const newVolume = e.target.value / 10;
+
+    setRange(e.target.value)
+
+    if (refAudio.current) {
+      refAudio.current.volume = newVolume;
+    }
   }
 
   useEffect(() => {
@@ -72,7 +124,8 @@ export function SpotifyProvider({ children }) {
       play, pause,
       loading, setLoading,
       time, setTime, ...time,
-      playWithId
+      playWithId,
+      previous, next, seekSong, volumen, range
     }} >
       {children}
     </SpotifyContext.Provider>
