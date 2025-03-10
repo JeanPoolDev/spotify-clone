@@ -22,7 +22,7 @@ export function Player() {
       <div className="flex flex-col items-center">
 
         <div className="flex gap-4">
-          <img className="w-4 cursor-pointer" src={assets.shuffle_icon} />
+          {/* <img className="w-4 cursor-pointer" src={assets.shuffle_icon} /> */}
           <img onClick={previous} className="w-4 cursor-pointer" src={assets.prev_icon} />
           {
             loading
@@ -31,7 +31,7 @@ export function Player() {
 
           }
           <img onClick={next} className="w-4 cursor-pointer" src={assets.next_icon} />
-          <img className="w-4 cursor-pointer" src={assets.loop_icon} />
+          {/* <img className="w-4 cursor-pointer" src={assets.loop_icon} /> */}
         </div>
 
         <div className="flex items-center gap-5">
@@ -44,10 +44,10 @@ export function Player() {
       </div>
 
       <div className="hidden lg:flex items-center gap-2">
-        <img className="w-4 cursor-pointer" src={assets.play_icon} />
-        <img className="w-4 cursor-pointer" src={assets.mic_icon} />
-        <img className="w-4 cursor-pointer" src={assets.queue_icon} />
-        <img className="w-4 cursor-pointer" src={assets.speaker_icon} />
+        {/* <img className="w-4 cursor-pointer" src={assets.play_icon} /> */}
+        {/* <img className="w-4 cursor-pointer" src={assets.mic_icon} /> */}
+        {/* <img className="w-4 cursor-pointer" src={assets.queue_icon} /> */}
+        {/* <img className="w-4 cursor-pointer" src={assets.speaker_icon} /> */}
         <img className="w-4 cursor-pointer" src={assets.volume_icon} />
         <input
           type="range"
@@ -56,9 +56,8 @@ export function Player() {
           min={0}
           max={10}
         />
-        <p>{range}</p>
-        <img className="w-4 cursor-pointer" src={assets.mini_player_icon} />
-        <img className="w-4 cursor-pointer" src={assets.zoom_icon} />
+        {/* <img className="w-4 cursor-pointer" src={assets.mini_player_icon} /> */}
+        {/* <img className="w-4 cursor-pointer" src={assets.zoom_icon} /> */}
       </div>
 
     </div>
