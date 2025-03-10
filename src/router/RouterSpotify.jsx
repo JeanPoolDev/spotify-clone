@@ -12,20 +12,20 @@ export function RouterSpotify() {
   const idAlbum = isAlbum ? location.pathname.split('/').pop() : '';
   const colorAlbum = albumsData[Number(idAlbum)].bgColor;
 
-    useEffect(() => {
-      isAlbum
-       ? inputRef.current.style.background = `linear-gradient(${colorAlbum}, #121212)`
-       : inputRef.current.style.background = `#121212`    
-    }, [isAlbum])
-    
+  useEffect(() => {
+    isAlbum
+      ? inputRef.current.style.background = `linear-gradient(${colorAlbum}, #121212)`
+      : inputRef.current.style.background = `#121212`
+  }, [colorAlbum, isAlbum])
+
   return (
     <div
-    ref={inputRef}
-    className="w-full bg-[#121212] m-2 rounded px-6 py-4 text-white overflow-auto lg:w-[75%] lg:ml-0 ">
+      ref={inputRef}
+      className="w-full bg-[#121212] m-2 rounded px-6 py-4 text-white overflow-auto lg:w-[75%] lg:ml-0 ">
       <Routes>
         <Route path="/" element={<Display />} />
         <Route path="/album/:id" element={<DisplayAlbum />} />
-        <Route path="/*" element={ <Navigate to={"/"}/> } />
+        <Route path="/*" element={<Navigate to={"/"} />} />
       </Routes>
     </div>
   )
